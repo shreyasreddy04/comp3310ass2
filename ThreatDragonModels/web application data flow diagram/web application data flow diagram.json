@@ -41,13 +41,14 @@
                 "text": "User (Browser)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -131,16 +132,33 @@
               ]
             },
             "id": "61a48812-6b17-4c01-b3e7-2c8cd0edcbde",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "User (Browser)",
               "description": "The user using the application through browser",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "18390352-457e-4306-ac68-820c7735440d",
+                  "title": "session hijacking",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Stolen session cookie via XSS or network sniffing allows impersonation",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "7"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
             }
           },
           {
@@ -157,13 +175,14 @@
                 "text": "Image URL"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -247,16 +266,33 @@
               ]
             },
             "id": "c60385a7-9273-45a0-85b7-725f5cd1f910",
-            "zIndex": 2,
             "data": {
               "type": "tm.Actor",
               "name": "Image URL",
               "description": "The URL user gives to the web application while adding movie",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "d67b2b2a-3e2d-4ee3-a5e7-c9c308257764",
+                  "title": "malicious data from external source",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "7"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "repudiation": 1
+              }
             }
           },
           {
@@ -273,13 +309,14 @@
                 "text": "Web\nApplication"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -363,19 +400,40 @@
               ]
             },
             "id": "ed6e6070-c062-43bd-9d3a-1bc7052e8b26",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
               "name": "Web\nApplication",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "4497ba09-6b75-4707-b74b-2bb93f3224c2",
+                  "title": "security information leak",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "When trying to add a movie in the website, if the data given by the user doesnot meet the form description, it leads to an error page, disclosing information about the code fixes",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": "8"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -402,6 +460,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -485,7 +544,6 @@
               ]
             },
             "id": "1a89be3f-36c4-4e24-aa45-95e980296e79",
-            "zIndex": 4,
             "data": {
               "type": "tm.Store",
               "name": "Database (SQLite)",
@@ -555,7 +613,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -575,12 +634,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "3070c39d-70cb-4a80-9995-331d3e8e3086",
+                  "title": "Broken access control",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "No server-side check that request.user owns or can modify the resource",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": "6.5"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Insert movie"
@@ -600,8 +678,8 @@
                 "y": 390
               },
               {
-                "x": 850,
-                "y": 410
+                "x": 810,
+                "y": 440
               },
               {
                 "x": 1000,
@@ -714,10 +792,6 @@
               {
                 "x": 136,
                 "y": 270
-              },
-              {
-                "x": 230,
-                "y": 270
               }
             ]
           },
@@ -725,7 +799,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -745,12 +820,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "20dc4386-f63b-4b74-b5fd-5932ea707f9e",
+                  "title": "forgery",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "State-changing POST requests lack CSRF tokens",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": "6"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Submit Image URL"
@@ -766,6 +860,10 @@
             },
             "vertices": [
               {
+                "x": 170,
+                "y": 150
+              },
+              {
                 "x": 220,
                 "y": 210
               }
@@ -775,7 +873,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -791,19 +890,38 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Add movie Dat",
+              "name": "Add movie Data",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "325cc1b3-092d-4c43-9058-a69cb94f275c",
+                  "title": "forgery",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "State-changing POST requests lack CSRF tokens",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "5"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
-              "Add movie Dat"
+              "Add movie Data"
             ],
             "id": "591dda74-7035-4118-878a-95a9b0c30850",
             "source": {
@@ -925,7 +1043,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -945,12 +1064,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "b76c65e5-b668-42dd-8e24-887e476eb5b3",
+                  "title": "SQL Injection",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Unparameterized or raw SQL queries accept attacker‐controlled input",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": "6.5"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "\tRead/Write Data"
@@ -966,6 +1104,10 @@
             },
             "vertices": [
               {
+                "x": 560,
+                "y": 280
+              },
+              {
                 "x": 720,
                 "y": 280
               }
@@ -975,7 +1117,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -995,12 +1138,31 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "c061c9a2-44cd-436d-813b-0e5dd26cdef1",
+                  "title": "SQL injection",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Unparameterized or raw SQL queries accept attacker‐controlled input ",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": "6.5"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Search DB"
@@ -1016,12 +1178,16 @@
             },
             "vertices": [
               {
-                "x": 620,
-                "y": 330
+                "x": 610,
+                "y": 360
               },
               {
-                "x": 890,
-                "y": 360
+                "x": 740,
+                "y": 380
+              },
+              {
+                "x": 900,
+                "y": 380
               },
               {
                 "x": 940,
@@ -1074,6 +1240,10 @@
             },
             "vertices": [
               {
+                "x": 580,
+                "y": -20
+              },
+              {
                 "x": 480,
                 "y": 50
               }
@@ -1124,8 +1294,98 @@
             },
             "vertices": [
               {
-                "x": 430,
-                "y": -50
+                "x": 395,
+                "y": -80
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Application-Database ",
+              "description": "All database operations originate from server‐side code and cross into the data store.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Application-Database "
+            ],
+            "id": "f226a723-7c01-49d8-8cfc-5775d4dd24aa",
+            "source": {
+              "x": 850,
+              "y": 190
+            },
+            "target": {
+              "x": 980,
+              "y": 440
+            },
+            "vertices": [
+              {
+                "x": 830,
+                "y": 300
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": " Web Application ↔ Image Server",
+              "description": "The server reaches out to an external host specified by the user.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              " Web Application ↔ Image Server"
+            ],
+            "id": "2ddbb590-95cd-435a-b0be-3c9b13f52593",
+            "source": {
+              "x": 340,
+              "y": -100
+            },
+            "target": {
+              "x": 460,
+              "y": -50
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Client-Server Trust Boundary",
+              "description": "All HTTP requests and form submissions cross from the untrusted client into server logic.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Client-Server Trust Boundary"
+            ],
+            "id": "efd4082c-8b35-4404-aed4-398a07c723ad",
+            "source": {
+              "x": 300,
+              "y": 100
+            },
+            "target": {
+              "x": 170,
+              "y": 450
+            },
+            "vertices": [
+              {
+                "x": 170,
+                "y": 450
               }
             ]
           }
@@ -1135,6 +1395,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Shreyas",
-    "threatTop": 0
+    "threatTop": 9
   }
 }
