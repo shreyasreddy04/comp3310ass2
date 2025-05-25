@@ -1,0 +1,37 @@
+{
+  "version": "2.4.1",
+  "summary": {
+    "title": "web application data flow diagram",
+    "owner": "Shreyas",
+    "description": "Dataflow diagram of the web application for comp3310 assignment 2",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Sudeshna"
+      },
+      {
+        "name": "Vaibhav"
+      },
+      {
+        "name": "Shreyas"
+      }
+    ],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "COMP3310dfd",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.4.1",
+        "cells": [],
+        "description": "DFD threat model diagram"
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Shreyas",
+    "threatTop": 0
+  }
+}
